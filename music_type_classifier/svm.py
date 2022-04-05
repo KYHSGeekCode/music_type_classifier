@@ -56,7 +56,7 @@ def run():
     print(con_mat.shape)  # (4, 4)
 
     # 분류정확도 - 식을 통해 구하기
-    acc = (con_mat[0, 0] + con_mat[1, 1] + con_mat[2, 2]) / len(y_true)
+    acc = (con_mat[0, 0] + con_mat[1, 1] + con_mat[2, 2] + con_mat[3, 3]) / len(y_true)
     print(acc)  # 0.25688073394495414
 
 
