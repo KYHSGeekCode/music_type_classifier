@@ -26,7 +26,7 @@ def run():
     print(y_train.shape)  # (361,)
 
     # 3. model
-    model = SVC(kernel='linear', verbose=1)  # kernel = 'rbf'  : default
+    model = SVC(kernel='poly', verbose=1)  # kernel = 'rbf'  : default
     # 데이터의 특징 때문에 분류정확도가 낮게 나오면 다른 커널 함수를 인수로 지정할 수 있음
     # 'linear' is too slow; others are bad
     # 'linear', 'poly', 'rbf', 'sigmoid' 등
