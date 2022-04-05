@@ -1,11 +1,15 @@
 # https://github.com/scikit-learn/scikit-learn/issues/19137
+import numpy as np
 from sklearn.svm import SVC  # model 생성
 from sklearn.model_selection import train_test_split  # train/test set
 from sklearn.metrics import accuracy_score, confusion_matrix  # model 평가
 
 
 def run():
-
+    X = np.load("dataset_X.npy", allow_pickle=True)
+    y = np.load("dataset_y.npy", allow_pickle=True)
+    print(X.shape)
+    print(y.shape)
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
 
     print(x_train.shape)  # (105, 4)
@@ -45,3 +49,7 @@ def run():
     acc  # 0.9777777777777777
 
     ## iris 데이터의 경우, NB모델보다 SVM모델을 사용할 때 분류정확도가 더 올라간 것을 확인할 수 있음
+
+
+if __name__ == '__main__':
+    run()

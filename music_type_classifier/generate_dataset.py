@@ -23,7 +23,7 @@ def run():
         del data['start']
         del data['end']
         if music_id in labels:
-            X.append(data[0:].to_numpy())
+            X.append(np.reshape(data[0:].to_numpy(), -1))
             y.append(labels[music_id])
         else:
             print(f"Could not find label for {music_id}")
