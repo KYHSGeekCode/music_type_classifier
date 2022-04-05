@@ -3,8 +3,10 @@ import os
 
 import opensmile
 
+from music_type_classifier.settings import FEAT_FOLDER, MUSIC_FOLDER
 
-def run(input_path: str, out_path: str):
+
+def preprocess_wavs(input_path: str, out_path: str):
     smile = opensmile.Smile(
         feature_set=opensmile.FeatureSet.ComParE_2016,
         feature_level=opensmile.FeatureLevel.Functionals,
@@ -20,4 +22,4 @@ def run(input_path: str, out_path: str):
 
 
 if __name__ == '__main__':
-    run("../../dataset20220330/music", "../..//dataset20220330/feat")
+    preprocess_wavs(MUSIC_FOLDER, FEAT_FOLDER)
