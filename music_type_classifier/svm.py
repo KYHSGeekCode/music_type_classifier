@@ -39,7 +39,7 @@ def run():
 
     # 분류정확도 - accuracy_score 함수 사용해서 구하기
     acc = accuracy_score(y_true, y_pred)
-    print(acc)  # 0.3853211009174312
+    print(acc)  # 0.4036697247706422
 
     con_mat = confusion_matrix(y_true, y_pred)
     print(con_mat)
@@ -57,7 +57,7 @@ def run():
 
     # 분류정확도 - 식을 통해 구하기
     acc = (con_mat[0, 0] + con_mat[1, 1] + con_mat[2, 2] + con_mat[3, 3]) / len(y_true)
-    print(acc)  # 0.25688073394495414
+    print(acc)  # 0.4036697247706422
 
 
 if __name__ == '__main__':
