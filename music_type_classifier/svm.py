@@ -18,7 +18,7 @@ def run():
     y = np.array(list(map(str, y)))
     print(Counter(y))  # Counter({'4': 117, '2': 86, '3': 80, '1': 78})
     scaler = MinMaxScaler()
-    sel = VarianceThreshold(threshold=(.8 * (1 - .8)))
+    sel = VarianceThreshold(threshold=(.85 * (1 - .85)))
     X = sel.fit_transform(X)
     X = scaler.fit_transform(X)
 
