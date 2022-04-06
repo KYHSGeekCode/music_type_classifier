@@ -7,22 +7,24 @@ from sklearn.svm import SVC  # model 생성
 from sklearn.model_selection import train_test_split  # train/test set
 from sklearn.metrics import accuracy_score, confusion_matrix  # model 평가
 from collections import Counter
+from sklearn.feature_selection import VarianceThreshold
 
 
 def run():
     X = np.load("dataset_X.npy", allow_pickle=True)
     y = np.load("dataset_y.npy", allow_pickle=True)
-    print(X.shape)
+    print(X.shape)  # (361, 6373)
     print(y.shape)
     y = np.array(list(map(str, y)))
-    print(Counter(y))
-    print(y)
+    print(Counter(y))  # Counter({'4': 117, '2': 86, '3': 80, '1': 78})
     scaler = MinMaxScaler()
+    sel = VarianceThreshold(threshold=(.8 * (1 - .8)))
+    X = sel.fit_transform(X)
     X = scaler.fit_transform(X)
 
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
 
-    print(x_train.shape)  # (361, 6373)
+    print(x_train.shape)  # (361, 2668)
     print(y_train.shape)  # (361,)
 
     # 3. model
@@ -39,7 +41,7 @@ def run():
 
     # 분류정확도 - accuracy_score 함수 사용해서 구하기
     acc = accuracy_score(y_true, y_pred)
-    print(acc)  # 0.4036697247706422
+    print(acc)  # 0.41284403669724773
 
     con_mat = confusion_matrix(y_true, y_pred)
     print(con_mat)
@@ -57,7 +59,7 @@ def run():
 
     # 분류정확도 - 식을 통해 구하기
     acc = (con_mat[0, 0] + con_mat[1, 1] + con_mat[2, 2] + con_mat[3, 3]) / len(y_true)
-    print(acc)  # 0.4036697247706422
+    print(acc)  # 0.41284403669724773
 
 
 if __name__ == '__main__':
