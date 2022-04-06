@@ -13,12 +13,14 @@ def preprocess_wavs(input_path: str, out_path: str):
     )
     input_directory = os.fsencode(input_path)
     os.makedirs(out_path, exist_ok=True)
+    processed = 0
     for file in os.listdir(input_directory):
         filename = os.fsdecode(file)
         music_id = int(filename.replace("song_", "").replace(".wav", ""))
         y = smile.process_file(os.path.join(input_path, filename))
         y.to_csv(os.path.join(out_path, f"feat_compare2016_{music_id}.csv"))
-        print(filename)
+        processed += 1
+        print(processed, filename)
 
 
 if __name__ == '__main__':

@@ -9,6 +9,7 @@ python = "^3.9"
 opensmile = { git = "https://github.com/KYHSGeekCode/opensmile-python.git", branch = "master" }
 audresample = { git = "https://github.com/KYHSGeekCode/audresample.git", branch = "master" }
 numpy = "^1.22.3"
+scipy = "1.9.0.dev0+1210.dd27ac7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
