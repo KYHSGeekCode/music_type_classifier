@@ -18,17 +18,17 @@ def run():
     y = np.array(list(map(str, y)))
     print(Counter(y))  # Counter({'4': 117, '2': 86, '3': 80, '1': 78})
     scaler = MinMaxScaler()
-    sel = VarianceThreshold(threshold=(.85 * (1 - .85)))
-    X = sel.fit_transform(X)
+    sel = VarianceThreshold(threshold=(.97 * (1 - .97)))
     X = scaler.fit_transform(X)
+    X = sel.fit_transform(X)
 
     x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=123)
 
-    print(x_train.shape)  # (361, 2668)
-    print(y_train.shape)  # (361,)
+    print(x_train.shape)  # (252, 1820)
+    print(y_train.shape)  # (252,)
 
     # 3. model
-    model = SVC(kernel='poly', verbose=1)  # kernel = 'rbf'  : default
+    model = SVC(kernel='linear')  # kernel = 'rbf'  : default
     # 데이터의 특징 때문에 분류정확도가 낮게 나오면 다른 커널 함수를 인수로 지정할 수 있음
     # 'linear' is too slow; others are bad
     # 'linear', 'poly', 'rbf', 'sigmoid' 등
@@ -59,7 +59,7 @@ def run():
 
     # 분류정확도 - 식을 통해 구하기
     acc = (con_mat[0, 0] + con_mat[1, 1] + con_mat[2, 2] + con_mat[3, 3]) / len(y_true)
-    print(acc)  # 0.41284403669724773
+    print(acc)  # 0.44036697247706424
 
 
 if __name__ == '__main__':
