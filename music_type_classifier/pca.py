@@ -19,9 +19,9 @@ def run():
     y = np.array(list(map(str, y)))
     print(Counter(y))  # Counter({'4': 117, '2': 86, '3': 80, '1': 78})
     scaler = MinMaxScaler()
-    sel = VarianceThreshold(threshold=(.85 * (1 - .85)))
-    X = sel.fit_transform(X)
+    sel = VarianceThreshold(threshold=(.97 * (1 - .97)))
     X = scaler.fit_transform(X)
+    X = sel.fit_transform(X)
     print(X.shape)
     y = pd.DataFrame(y, columns=['label'])
 
